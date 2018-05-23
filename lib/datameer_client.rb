@@ -443,6 +443,14 @@ class DatameerClient
     self.class.get("#{@url}/rest/job-execution/job-details/#{exec_id}", basic_auth: @auth)
   end
 
+  def download_wbk_data(id, sheet_name)
+    self.class.get("#{@url}/rest/data/workbook/#{id}/#{sheet_name}/download", basic_auth: @auth)
+  end
+
+  def download_job_data(id)
+    self.class.get("#{@url}/rest/data/import-job/#{id}/download", basic_auth: @auth)
+  end
+
   def delete_job_data(exec_id)
     self.class.delete("#{@url}/rest/data/#{exec_id}", basic_auth: @auth)
   end
