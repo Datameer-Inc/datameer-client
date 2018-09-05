@@ -41,14 +41,14 @@ class DatameerClient
   # @param [String] name
   # @param [String] email
   # @param [String] role
-  # @param [String] group can be empty
+  # @param [Array] groups can be empty
   # @param [String] password
   # @return [HTTParty::Response]
-  def create_user(name,email,role,password,group = nil)
+  def create_user(name, email, role, password, groups = [])
     user_data = {
         :username => name,
         :email => email,
-        :groups => [group],
+        :groups => groups,
         :roles => [role]
 
     }
