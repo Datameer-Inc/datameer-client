@@ -389,15 +389,15 @@ class DatameerClient
   end
 
   def run_datameer_job_by_path(path)
-    self.class.post("#{@url}/api/job-execution/#{path}/trigger", basic_auth: @auth, :headers => {'Content-Type' => 'application/json'})
+    self.class.post("#{@url}/api/job-execution/#{ERB::Util.url_encode(path)}/trigger", basic_auth: @auth, :headers => {'Content-Type' => 'application/json'})
   end
 
   def get_datameer_job_status_by_path(path)
-    self.class.get("#{@url}/api/job-execution/#{path}/status", basic_auth: @auth)
+    self.class.get("#{@url}/api/job-execution/#{ERB::Util.url_encode(path)}/status", basic_auth: @auth)
   end
 
   def cancel_datameer_job_by_path(path)
-    self.class.post("#{@url}/api/job-execution/#{path}/stop", basic_auth: @auth, :headers => {'Content-Type' => 'application/json'})
+    self.class.post("#{@url}/api/job-execution/#{ERB::Util.url_encode(path)}/stop", basic_auth: @auth, :headers => {'Content-Type' => 'application/json'})
   end
 
   # *** misc ***
