@@ -385,15 +385,15 @@ class DatameerClient
   end
 
   def create_variable(data)
-    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data)
   end
 
   def update_variable(data)
-    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data)
   end
 
   def delete_variable(data)
-    self.class.delete("#{@url}/api/variables", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+    self.class.delete("#{@url}/api/variables", basic_auth: @auth, body: data)
   end
 
   # *** job trigger ***
