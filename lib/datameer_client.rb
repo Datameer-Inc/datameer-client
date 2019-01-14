@@ -378,6 +378,24 @@ class DatameerClient
     self.class.delete("#{@url}/rest/infographics/#{id}", basic_auth: @auth)
   end
 
+  # *** Datameer Variables ***
+
+  def get_variables
+    self.class.get("#{@url}/api/variables", basic_auth: @auth)
+  end
+
+  def create_variable(data)
+    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data)
+  end
+
+  def update_variable(data)
+    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data)
+  end
+
+  def delete_variable(data)
+    self.class.delete("#{@url}/api/variables", basic_auth: @auth, body: data)
+  end
+
   # *** job trigger ***
 
   def run_datameer_job(id)
