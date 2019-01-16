@@ -332,6 +332,10 @@ class DatameerClient
     self.class.post("#{@url}/rest/connections", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
   end
 
+  def create_datawarehouse_connection(data)
+    self.class.post("#{@url}/api/datawarehouses", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
   def get_connections
     self.class.get("#{@url}/rest/connections", basic_auth: @auth)
   end
