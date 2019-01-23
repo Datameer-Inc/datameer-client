@@ -389,11 +389,11 @@ class DatameerClient
   end
 
   def create_variable(data)
-    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data)
+    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data)
   end
 
   def update_variable(data)
-    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data)
+    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data)
   end
 
   def delete_variable(data)
