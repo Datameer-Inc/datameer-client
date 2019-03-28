@@ -384,20 +384,32 @@ class DatameerClient
 
   # *** Datameer Variables ***
 
+  def get_variable
+    self.class.get("#{@url}/api/variables/#{id}", basic_auth: @auth)
+  end
+
   def get_variables
     self.class.get("#{@url}/api/variables", basic_auth: @auth)
   end
 
   def create_variable(data)
-    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data)
+    self.class.post("#{@url}/api/variables", basic_auth: @auth, body: data, :headers => {'Content-Type' => 'application/json'})
   end
 
-  def update_variable(data)
-    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data)
+  def update_variable(id, data)
+    self.class.put("#{@url}/api/variables/#{id}", basic_auth: @auth, body: data, :headers => {'Content-Type' => 'application/json'})
   end
 
-  def delete_variable(data)
-    self.class.delete("#{@url}/api/variables", basic_auth: @auth, body: data)
+  def update_variables(data)
+    self.class.put("#{@url}/api/variables", basic_auth: @auth, body: data, :headers => {'Content-Type' => 'application/json'})
+  end
+
+  def delete_variable(id)
+    self.class.delete("#{@url}/api/variables/#{id}", basic_auth: @auth)
+  end
+
+  def delete_variables(data)
+    self.class.delete("#{@url}/api/variables/", basic_auth: @auth, body: data, :headers => {'Content-Type' => 'application/json'}))
   end
 
   # *** job trigger ***
