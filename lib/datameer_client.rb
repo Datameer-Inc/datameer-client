@@ -409,7 +409,7 @@ class DatameerClient
   end
 
   def delete_variables(data)
-    self.class.delete("#{@url}/api/variables/", basic_auth: @auth, body: data, :headers => {'Content-Type' => 'application/json'}))
+    self.class.delete("#{@url}/api/variables", basic_auth: @auth, body: data, :headers => {'Content-Type' => 'application/json'})
   end
 
   # *** job trigger ***
