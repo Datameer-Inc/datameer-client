@@ -382,6 +382,16 @@ class DatameerClient
     self.class.delete("#{@url}/rest/infographics/#{id}", basic_auth: @auth)
   end
 
+  # *** External Systems ***
+
+  def get_external_systems
+    self.class.get("#{@url}/api/external-system/", basic_auth: @auth)
+  end
+
+  def delete_external_system(name)
+    self.class.delete("#{@url}/api/external-system/#{name}", basic_auth: @auth)
+  end
+
   # *** Datameer Variables ***
 
   def get_variable
