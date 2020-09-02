@@ -25,9 +25,11 @@ class DatameerClient
   # @param [String] url Datameer URL
   # @param [String] user Datameer user
   # @param [String] password Datameer users password
-  def initialize(url, user, password)
+  # @param [Boolean] verify_ssl to enable/disable ssl certificate verification, default: true
+  def initialize(url, user, password, verify_ssl = true)
     @url = url
     @auth = {username: user, password: password}
+    self.class.default_options.update(verify: verify_ssl)
   end
 
   # Returns a list of all the users and their information including
