@@ -474,7 +474,7 @@ class DatameerClient
   end
 
   def get_running_jobs
-    self.class.get("#{@url}/rest/jobs/list-running", basic_auth: @auth)
+    self.class.get("#{@url}/api/job-execution/list-running", basic_auth: @auth)
   end
 
   def get_running_jobs_ui
