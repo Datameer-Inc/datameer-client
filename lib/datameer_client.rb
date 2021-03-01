@@ -358,6 +358,10 @@ class DatameerClient
     self.class.delete("#{@url}/rest/connections/#{id}", basic_auth: @auth)
   end
 
+  def create_connection_v2(data)
+    self.class.post("#{@url}/api/connections", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
   # *** infographics ***
 
   def create_infographic(data)
