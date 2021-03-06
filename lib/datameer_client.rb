@@ -362,6 +362,18 @@ class DatameerClient
     self.class.post("#{@url}/api/connections", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
   end
 
+  def update_connection_v2(data, uuid)
+    self.class.put("#{@url}/api/connections/#{uuid}", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def get_connection_v2(uuid)
+    self.class.get("#{@url}/api/connections/#{uuid}", basic_auth: @auth)
+  end
+
+  def get_connections_v2
+    self.class.get("#{@url}/api/connections", basic_auth: @auth)
+  end
+
   # *** infographics ***
 
   def create_infographic(data)
