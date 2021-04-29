@@ -254,6 +254,22 @@ class DatameerClient
     self.class.delete("#{@url}/rest/import-job/#{id}", basic_auth: @auth)
   end
 
+  def create_data_source_v2(data)
+    self.class.post("#{@url}/api/data-sources", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def update_data_source_v2(data, uuid)
+    self.class.put("#{@url}/api/data-sources/#{uuid}", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def get_data_source_v2(uuid)
+    self.class.get("#{@url}/api/data-sources/#{uuid}", basic_auth: @auth)
+  end
+
+  def get_data_sources_v2
+    self.class.get("#{@url}/api/data-sources", basic_auth: @auth)
+  end
+
   # *** workbooks ***
 
   def get_workbook(id)
