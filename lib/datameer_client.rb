@@ -254,15 +254,23 @@ class DatameerClient
     self.class.delete("#{@url}/rest/import-job/#{id}", basic_auth: @auth)
   end
 
+  def create_data_source_v2(data)
+    self.class.post("#{@url}/api/data-sources", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def get_data_source_v2(uuid)
+    self.class.get("#{@url}/api/data-sources/#{uuid}", basic_auth: @auth)
+  end
+
+  def get_data_sources_v2
+    self.class.get("#{@url}/api/data-sources", basic_auth: @auth)
+  end
+
   # *** workbooks ***
 
   def get_workbook(id)
     warn "[DEPRECATION] `get_workbook` is deprecated. Please use `get_workbook_v2` instead"
     self.class.get("#{@url}/rest/workbook/#{id}", basic_auth: @auth)
-  end
-
-  def get_workbook_v2(uuid)
-    self.class.get("#{@url}/api/workbooks/#{uuid}", basic_auth: @auth)
   end
 
   def get_workbooks
@@ -286,20 +294,28 @@ class DatameerClient
     self.class.post("#{@url}/rest/workbook", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
   end
 
-  def create_workbook_v2(data)
-    self.class.post("#{@url}/api/workbooks", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
-  end
-
   def update_workbook(data, id)
     self.class.put("#{@url}/rest/workbook/#{id}", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def rollback_workbook(data)
+    self.class.put("#{@url}/api/workbooks/rollback", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def create_workbook_v2(data)
+    self.class.post("#{@url}/api/workbooks", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
   end
 
   def update_workbook_v2(data, uuid)
     self.class.put("#{@url}/api/workbooks/#{uuid}", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
   end
 
-  def rollback_workbook(data)
-    self.class.put("#{@url}/api/workbooks/rollback", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  def get_workbook_v2(uuid)
+    self.class.get("#{@url}/api/workbooks/#{uuid}", basic_auth: @auth)
+  end
+
+  def get_workbooks_v2
+    self.class.get("#{@url}/api/workbooks", basic_auth: @auth)
   end
 
   # ** exportjobs ***
