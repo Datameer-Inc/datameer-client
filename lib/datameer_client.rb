@@ -344,6 +344,18 @@ class DatameerClient
     self.class.delete("#{@url}/rest/export-job/#{id}", basic_auth: @auth)
   end
 
+  def create_export_job_v2(data)
+    self.class.post("#{@url}/api/export-jobs", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
+  end
+
+  def get_export_job_v2(uuid)
+    self.class.get("#{@url}/api/export-jobs/#{uuid}", basic_auth: @auth)
+  end
+
+  def get_export_jobs_v2
+    self.class.get("#{@url}/api/export-jobs", basic_auth: @auth)
+  end
+
   # *** connections ***
 
   def create_connection(data)
