@@ -557,8 +557,8 @@ class DatameerClient
     self.class.delete("#{@url}/rest/data/#{exec_id}", basic_auth: @auth)
   end
 
-  def delete_file(file_id)
-    self.class.delete("#{@url}/api/filesystem/files?fileIds=#{file_id}", basic_auth: @auth)
+  def delete_file(data)
+    self.class.delete("#{@url}/api/filesystem/files", basic_auth: @auth, body: data, headers: {'Content-Type' => 'application/json'})
   end
 
   def set_tag(file_id, tags)
